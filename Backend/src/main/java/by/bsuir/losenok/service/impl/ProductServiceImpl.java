@@ -1,0 +1,35 @@
+package by.bsuir.losenok.service.impl;
+
+import by.bsuir.losenok.dao.ProductDAO;
+import by.bsuir.losenok.dto.ProductDTO;
+import by.bsuir.losenok.dto.converter.impl.ProductDTOConverter;
+import by.bsuir.losenok.entity.Product;
+import by.bsuir.losenok.service.ProductService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Transactional
+public class ProductServiceImpl extends GenericServiceImpl<Product, ProductDTO, Long> implements ProductService {
+
+    private ProductDAO productDAO;
+    private ProductDTOConverter productDTOConverter;
+
+    @Override
+    public List<ProductDTO> getProducts() {
+        List<Product> products = productDAO.getProducts();
+        return productDTOConverter.getDtoList(products);
+    }
+
+    public void setProductDAO(ProductDAO productDAO) {
+        setGenericDao(productDAO);
+        this.productDAO = productDAO;
+    }
+
+    public void setProductDTOConverter(ProductDTOConverter productDTOConverter) {
+        setDtoConverter(productDTOConverter);
+        this.productDTOConverter = productDTOConverter;
+    }
+}

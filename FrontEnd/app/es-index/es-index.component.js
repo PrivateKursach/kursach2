@@ -3,22 +3,30 @@ export var esIndexComponent = {
     controller: IndexComponentController
 };
 
-function IndexComponentController($rootScope, $cookies, $state) {
+function IndexComponentController(sessionService, $rootScope, $cookies, $state) {
     var $ctrl = this;
 
     $ctrl.$onInit = function () {
-        $rootScope.sessionEmployeeId = $cookies.get("sessionEmployeeId");
+        $rootScope.sessionUserId = $cookies.get("sessionUserId");
         $rootScope.sessionRole = $cookies.get("sessionRole");
 
         $ctrl.root = $rootScope;
     };
 
     $ctrl.logout = function () {
-        $rootScope.sessionEmployeeId = undefined;
+        $rootScope.sessionUserId = undefined;
         $rootScope.sessionRole = undefined;
-        $cookies.put("sessionEmployeeId", undefined);
+        $cookies.put("sessionUserId", undefined);
         $cookies.put("sessionRole", undefined);
 
-        $state.go("login");
+        $state.go("products");
+    };
+    
+    $ctrl.isLogged = function () {
+        return sessionService.isLogged($ctrl.root);
+    };
+
+    $ctrl.isAdmin = function () {
+        return sessionService.isAdmin($ctrl.root);
     };
 }

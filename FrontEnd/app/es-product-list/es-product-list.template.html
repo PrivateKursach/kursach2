@@ -1,0 +1,37 @@
+<div class="col-lg-3 col-md-4 sidebar">
+    <es-product-list-sidebar></es-product-list-sidebar>
+</div>
+
+<div class="col-lg-9 col-md-8">
+
+    <div class="clearfix">
+        <div class="buttons-block">
+            <button class="btn btn-primary btn-md">Кнопачка</button>
+        </div>
+    </div>
+
+    <div class="alert alert-danger" ng-show="$ctrl.errorMessage">
+        {{ $ctrl.errorMessage }}
+    </div>
+    <div class="alert alert-info" ng-show="$ctrl.productList.length == 0">
+        Нихуя нет
+    </div>
+
+    <div ng-if="$ctrl.totalItems > $ctrl.itemsPerPage">
+        <es-product-list-pagination current-page="$ctrl.currentPage" items-per-page="$ctrl.itemsPerPage" total-items="$ctrl.totalItems" on-page-changed="$ctrl.pageChanged(currentPage)" on-items-per-page-changed="$ctrl.itemsPerPageChanged(itemsPerPage)"></es-product-list-pagination>
+    </div>
+
+    <div class="well clearfix" ng-repeat="product in $ctrl.productList">
+        <h3><a ui-sref="product({ productId : product.id, prevState : $ctrl.getStateInfo() })">{{ product.name }}</a></h3>
+        <p>Цена: {{ product.price }} р.</p>
+        <p>{{ product.description }}</p>
+        <div class="buttons-block">
+            <a class="btn btn-sm btn-primary" ng-click="$ctrl.addToCart(product.id)">В корзину</a>
+        </div>
+    </div>
+
+    <div ng-if="$ctrl.totalItems > $ctrl.itemsPerPage">
+        <es-product-list-pagination current-page="$ctrl.currentPage" items-per-page="$ctrl.itemsPerPage" total-items="$ctrl.totalItems" on-page-changed="$ctrl.pageChanged(currentPage)" on-items-per-page-changed="$ctrl.itemsPerPageChanged(itemsPerPage)"></es-product-list-pagination>
+    </div>
+
+</div>

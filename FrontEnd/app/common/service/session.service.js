@@ -10,4 +10,12 @@ export default function sessionService($http) {
             return response.data;
         });
     };
+
+    service.isLogged = function (rootScope) {
+        return rootScope.sessionUserId;
+    };
+    
+    service.isAdmin = function (rootScope) {
+        return rootScope.sessionRole == 'Admin';
+    };
 }

@@ -7,11 +7,12 @@
                     <a class="navbar-brand">Electronic Shop</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li ng-if="$ctrl.root.sessionEmployeeId" ui-sref-active="active"><a ui-sref="products">Товары</a></li>
+                    <li ui-sref-active="active"><a ui-sref="productList">Товары</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li ui-sref-active="active" ng-if="!$ctrl.root.sessionEmployeeId"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
-                    <li ng-if="$ctrl.root.sessionEmployeeId"><a ng-click="$ctrl.logout()"><span class="glyphicon glyphicon-log-in"></span> Выйти</a></li>
+                    <li ui-sref-active="active" ng-if="!$ctrl.isLogged()"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
+                    <li ui-sref-active="active" ng-if="!$ctrl.isLogged()"><a ui-sref="registration">Регистрация</a></li>
+                    <li ng-if="$ctrl.isLogged()"><a ng-click="$ctrl.logout()"><span class="glyphicon glyphicon-log-in"></span> Выйти</a></li>
                 </ul>
             </div>
         </nav>

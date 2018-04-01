@@ -8,11 +8,11 @@ function LoginComponentController(sessionService, $rootScope, $cookies, $state) 
 
     $ctrl.login = function () {
         sessionService.login($ctrl.loginForm).then(function (sessionData) {
-            $cookies.put("sessionEmployeeId", sessionData.employeeId);
+            $cookies.put("sessionUserId", sessionData.id);
             $cookies.put("sessionRole", sessionData.role);
-            $rootScope.sessionEmployeeId = sessionData.employeeId;
+            $rootScope.sessionUserId = sessionData.id;
             $rootScope.sessionRole = sessionData.role;
-            $state.go("projects");
+            $state.go("productList");
         });
     };
 }

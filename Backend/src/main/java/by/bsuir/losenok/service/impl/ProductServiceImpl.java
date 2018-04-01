@@ -5,6 +5,7 @@ import by.bsuir.losenok.dto.ProductDTO;
 import by.bsuir.losenok.dto.converter.impl.ProductDTOConverter;
 import by.bsuir.losenok.entity.Product;
 import by.bsuir.losenok.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,11 +24,13 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, ProductDTO, 
         return productDTOConverter.getDtoList(products);
     }
 
+    @Autowired
     public void setProductDAO(ProductDAO productDAO) {
         setGenericDao(productDAO);
         this.productDAO = productDAO;
     }
 
+    @Autowired
     public void setProductDTOConverter(ProductDTOConverter productDTOConverter) {
         setDtoConverter(productDTOConverter);
         this.productDTOConverter = productDTOConverter;

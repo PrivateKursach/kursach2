@@ -8,15 +8,12 @@ import javax.persistence.Table;
 @Table(name = "es_product")
 public class Product extends EntityObject<Long> {
 
-    @Column(name = "name")
     private String name;
-    @Column(name = "description")
     private String description;
-    @Column(name = "image_url")
     private String imageUrl;
-    @Column(name = "price")
     private Integer price;
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -25,6 +22,7 @@ public class Product extends EntityObject<Long> {
         this.name = name;
     }
 
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -33,6 +31,7 @@ public class Product extends EntityObject<Long> {
         this.description = description;
     }
 
+    @Column(name = "image_url")
     public String getImageUrl() {
         return imageUrl;
     }
@@ -41,6 +40,7 @@ public class Product extends EntityObject<Long> {
         this.imageUrl = imageUrl;
     }
 
+    @Column(name = "price")
     public Integer getPrice() {
         return price;
     }

@@ -7,7 +7,7 @@ function ProductListController(productService, $state, $stateParams) {
     var $ctrl = this;
 
     $ctrl.$onInit = function () {
-        setNewsList();
+        setProductList();
     };
 
     $ctrl.getStateInfo = function () {
@@ -31,7 +31,7 @@ function ProductListController(productService, $state, $stateParams) {
 
     var availableLimits  = [10, 20, 30, 50];
 
-    function setNewsList() {
+    function setProductList() {
         var page = parseInt($stateParams.page, 10);
         var limit = parseInt($stateParams.limit, 10);
         if (availableLimits.indexOf(limit) == -1) {
@@ -39,9 +39,10 @@ function ProductListController(productService, $state, $stateParams) {
         }
 
         var offset = (page - 1) * limit;
-        var promise = productService.getAllProducts();
+        var promise = productService.getAllProducts(offset, limit);
         promise.then(function (response) {
-            $ctrl.productList = response;
+            $ctrl.productList = response.productList;
+            $ctrl.totalItems = response.totalCount;
             $ctrl.itemsPerPage = limit;
             $ctrl.currentPage = page;
         }, function (errResponse) {

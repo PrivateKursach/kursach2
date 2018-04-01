@@ -3,14 +3,34 @@ export default function routing($stateProvider, $urlRouterProvider) {
 
     var welcomeState = {
         name: "welcome",
-        url: "/",
-        component: "esProductList"
+        url: "/?page&limit",
+        component: "esProductList",
+        params: {
+            page: {
+                value: '1',
+                squash: true
+            },
+            limit: {
+                value: '10',
+                squash: true
+            }
+        }
     };
 
     var productListState = {
         name: "productList",
-        url: "/products",
-        component: "esProductList"
+        url: "/products?page&limit",
+        component: "esProductList",
+        params: {
+            page: {
+                value: '1',
+                squash: true
+            },
+            limit: {
+                value: '10',
+                squash: true
+            }
+        }
     };
 
     var registrationState = {

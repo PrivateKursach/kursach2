@@ -19,9 +19,14 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, ProductDTO, 
     private ProductDTOConverter productDTOConverter;
 
     @Override
-    public List<ProductDTO> getProducts() {
-        List<Product> products = productDAO.getProducts();
+    public List<ProductDTO> getProducts(int offset, int limit) {
+        List<Product> products = productDAO.getProducts(offset, limit);
         return productDTOConverter.getDtoList(products);
+    }
+
+    @Override
+    public Long getNumberOfProducts() {
+        return productDAO.getNumberOfProducts();
     }
 
     @Autowired

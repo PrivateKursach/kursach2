@@ -15,8 +15,13 @@ public class ProductDAOImpl extends GenericDAOImpl<Product, Long> implements Pro
     }
 
     @Override
-    public List<Product> getProducts() {
+    public List<Product> getProducts(int offset, int limit) {
         TypedQuery<Product> query = entityManager.createQuery("select p from Product p", Product.class);
-        return query.getResultList();
+        return query.setFirstResult(offset).setMaxResults(limit).getResultList();
+    }
+
+    @Override
+    public Long getNumberOfProducts() {
+        return entityManager.createQuery("select count(p.id) from Product p", Long.class).getSingleResult();
     }
 }

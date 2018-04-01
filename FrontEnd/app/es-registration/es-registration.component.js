@@ -3,7 +3,7 @@ export var esRegistrationComponent = {
     controller: RegistrationComponentController
 };
 
-function RegistrationComponentController(sessionService, $rootScope, $cookies, $state) {
+function RegistrationComponentController() {
     var $ctrl = this;
 
     $ctrl.register = function () {

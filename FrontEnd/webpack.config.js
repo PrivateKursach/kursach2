@@ -9,7 +9,7 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            NEWSHUB_REST_SERVER_URI: JSON.stringify("http://localhost:8081/rest")
+            ES_REST_SERVER_URI: JSON.stringify("http://localhost:8081/rest")
         })
     ],
     module: {

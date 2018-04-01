@@ -1,0 +1,28 @@
+<div class="wrapper">
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand">Electronic Shop</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li ng-if="$ctrl.root.sessionEmployeeId" ui-sref-active="active"><a ui-sref="products">Товары</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ui-sref-active="active" ng-if="!$ctrl.root.sessionEmployeeId"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
+                    <li ng-if="$ctrl.root.sessionEmployeeId"><a ng-click="$ctrl.logout()"><span class="glyphicon glyphicon-log-in"></span> Выйти</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <ui-view></ui-view>
+    </main>
+
+</div>
+
+<footer class="container-fluid">
+    <p class="text-center">Electronic Shop © 2018</p>
+</footer>>

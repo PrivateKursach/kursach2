@@ -6,14 +6,14 @@ import uibootstrap from 'angular-ui-bootstrap';
 
 import routing from './routing';
 
-import {esHeaderComponent} from './es-header/es-header.component';
+import {esIndexComponent} from './es-index/es-index.component';
 import {esProductListComponent} from './es-product-list/es-product-list.component';
 import {esLoginComponent} from './es-login/es-login.component';
 import {esRegistrationComponent} from './es-registration/es-registration.component';
 
 angular.module("app", [ngCookies, uirouter, pascalprechttranslate, uibootstrap])
     .config(routing)
-    .component("esHeader", esHeaderComponent)
+    .component("esIndex", esIndexComponent)
     .component("esProductList", esProductListComponent)
     .component("esLogin", esLoginComponent)
     .component("esRegistration", esRegistrationComponent);

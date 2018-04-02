@@ -8,7 +8,7 @@ export var esEditProductModalComponent = {
     }
 };
 
-function EditProductModalController(productService, errorMessageService) {
+function EditProductModalController(productService, productTypeService, errorMessageService) {
     var $ctrl = this;
 
     $ctrl.$onInit = function () {
@@ -19,6 +19,36 @@ function EditProductModalController(productService, errorMessageService) {
         }, function (errResponse) {
             $ctrl.errorMessage = errorMessageService.getErrorMessageByHttpCode(errResponse.status);
         });
+        $ctrl.product = {
+            types: []
+        };
+        productTypeService.getAllProductTypes().then(function (types) {
+            $ctrl.types = types;
+        });
+    };
+
+    $ctrl.selectType = function ($item, $model, $label, $event) {
+        $ctrl.typesInput = "";
+
+        var typeIndex = $ctrl.product.types.findIndex(function (type, index, types) {
+            if (type.id == $item.id) {
+                return true;
+            }
+        });
+
+        if (typeIndex == -1) {
+            $ctrl.product.types.push($item);
+        }
+    };
+
+    $ctrl.removeType = function (typeToRemove) {
+        var typeIndex = $ctrl.product.types.findIndex(function (type, index, types) {
+            if (type.id == typeToRemove.id) {
+                return true;
+            }
+        });
+
+        $ctrl.product.types.splice(typeIndex, 1);
     };
 
     $ctrl.save = function () {

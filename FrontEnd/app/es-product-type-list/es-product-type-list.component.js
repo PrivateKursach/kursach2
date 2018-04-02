@@ -12,15 +12,24 @@ function ProductTypeListController(productTypeService, modalService) {
     
 
     $ctrl.openAddProductTypeModal = function () {
-        modalService.openAddProductTypeModal();
+        var modalInstance = modalService.openAddProductTypeModal();
+        modalInstance.result.then(function () {
+            setProductTypeList();
+        });
     };
 
     $ctrl.openEditProductTypeModal = function (productTypeId) {
-        modalService.openEditProductTypeModal(productTypeId);
+        var modalInstance = modalService.openEditProductTypeModal(productTypeId);
+        modalInstance.result.then(function () {
+            setProductTypeList();
+        });
     };
 
     $ctrl.openDeleteProductTypeModal = function (productTypeId) {
-        modalService.openDeleteProductTypeModal(productTypeId);
+        var modalInstance = modalService.openDeleteProductTypeModal(productTypeId);
+        modalInstance.result.then(function () {
+            setProductTypeList();
+        });
     };
 
     function setProductTypeList() {

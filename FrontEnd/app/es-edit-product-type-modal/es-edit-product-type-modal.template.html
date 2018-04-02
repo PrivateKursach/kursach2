@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$ctrl.dismiss()">&times;</button>
+    <h4 class="modal-title">Изменение категории</h4>
+</div>
+<div class="modal-body">
+    <form name="productTypeForm" role="form">
+        <div class="form-group">
+            <label for="name">Название категории:</label>
+            <input type="text" class="form-control" id="name" name="name" ng-model="$ctrl.productType.name" ng-maxlength="100" required>
+        </div>
+        <div class="alert alert-danger" ng-show="productTypeForm.name.$touched && productTypeForm.name.$error.required">
+            Название не может быть пустым
+        </div>
+        <div class="alert alert-danger" ng-show="productForm.name.$touched && productForm.name.$error.maxlength">
+            Максимальная длина названия 100 символов
+        </div>
+    </form>
+    <div class="alert alert-danger" ng-show="$ctrl.errorMessage">
+        {{ $ctrl.errorMessage }}
+    </div>
+</div>
+<div class="modal-footer">
+    <input type="submit" value="Сохранить" class="btn btn-primary" ng-disabled="productTypeForm.$invalid" ng-click="$ctrl.save()">
+    <button type="button" class="btn btn-default" ng-click="$ctrl.dismiss()">Отмена</button>
+</div>

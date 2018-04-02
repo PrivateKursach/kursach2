@@ -51,7 +51,7 @@ function modalService($uibModal) {
             component : "esDeleteProductTypeModal",
             resolve : {
                 productTypeId : function () {
-                    return producTypetId;
+                    return productTypeId;
                 }
             }
         });

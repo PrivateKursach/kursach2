@@ -10,6 +10,15 @@ function productTypeService($http) {
         });
     };
 
+    service.getProductTypeById = function (productTypeId) {
+        return $http({
+            method: "GET",
+            url: "http://localhost:8081/rest/product-types/" + productTypeId
+        }).then(function (response) {
+            return response.data;
+        });
+    };
+
     service.addProductType = function (productType) {
         return $http({
             method : "POST",

@@ -66,6 +66,12 @@ function modalService($uibModal) {
                 }
             }
         });
-    }
+    };
+    
+    service.openCreateOrderModal = function () {
+        return $uibModal.open({
+            component : "esCreateOrderModal"
+        });
+    };
     
 }

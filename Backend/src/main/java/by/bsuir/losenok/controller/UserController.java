@@ -25,7 +25,7 @@ public class UserController {
         return ResponseEntity.ok(userService.register(userDTO));
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/{userId}/orders")
     public ResponseEntity<List<OrderDTO>> getUserOrders(@PathVariable Long userId) {
         return ResponseEntity.ok(orderService.getOrdersByUser(userId));
     }

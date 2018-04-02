@@ -15,7 +15,7 @@
     <p>Заказчик: {{ order.user.email }}</p>
     <p>Статус: {{ order.status }}</p>
     <div class="buttons-block">
-        <a class="btn btn-sm btn-primary" ng-if="order.status != 'Принят'" ng-click="$ctrl.acceptOrder(order.id)">Принять заказ</a>
+        <a class="btn btn-sm btn-primary" ng-if="$ctrl.isAdmin() && order.status != 'Принят'" ng-click="$ctrl.acceptOrder(order.id)">Принять заказ</a>
     </div>
 </div>
 

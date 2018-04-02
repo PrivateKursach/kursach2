@@ -10,6 +10,10 @@ function OrderListController(orderService, modalService, sessionService, $rootSc
         setOrders();
     };
     
+    $ctrl.isAdmin = function () {
+        return sessionService.isAdmin($rootScope);
+    };
+    
     $ctrl.acceptOrder = function (orderId) {
         var modalInstance = modalService.openAcceptOrderModal(orderId);
         modalInstance.result.then(function () {

@@ -3,12 +3,16 @@ var esCartComponent = {
     controller : CartController
 };
 
-function CartController(orderService, sessionService, $rootScope, $cookies) {
+function CartController(modalService, sessionService, $rootScope, $cookies) {
     var $ctrl = this;
 
     $ctrl.$onInit = function () {
         $ctrl.cartData = {};
         populateCart();
+        $ctrl.totalPrice = 0;
+        $ctrl.cartData.forEach(function (item, i, array) {
+            $ctrl.totalPrice += parseInt(item.price, 10);
+        });
     };
 
     $ctrl.isLogged = function () {
@@ -16,16 +20,7 @@ function CartController(orderService, sessionService, $rootScope, $cookies) {
     };
     
     $ctrl.createOrder = function () {
-        var order = {
-            user: {
-                id: $rootScope.sessionUserId
-            },
-            created_date: new Date(),
-            products: $ctrl.cartData
-        };
-        orderService.createOrder(order).then(function (createdOrder) {
-            
-        });
+        modalService.openCreateOrderModal();
     };
 
     function populateCart() {

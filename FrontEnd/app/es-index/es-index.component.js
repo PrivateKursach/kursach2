@@ -44,6 +44,8 @@ function IndexComponentController(sessionService, $rootScope, $cookies, $state) 
         $rootScope.sessionRole = undefined;
         $cookies.put("sessionUserId", undefined);
         $cookies.put("sessionRole", undefined);
+        $cookies.put("cartData", undefined);
+        $cookies.putObject('cartData', undefined);
 
         $state.go("products");
     };

@@ -1,10 +1,16 @@
 export default function productService($http) {
     var service = this;
 
-    service.getAllProducts = function (offset, limit) {
+    service.getAllProducts = function (offset, limit, typesIds) {
+        var url = ES_REST_SERVER_URI + "/products?offset=" + offset + "&limit=" + limit;
+        if (typesIds) {
+            typesIds.forEach(function (item, i, typesIds) {
+                url = url + "&type=" + item;
+            });
+        }
         return $http({
             method: "GET",
-            url: ES_REST_SERVER_URI + "/products?offset=" + offset + "&limit=" + limit
+            url: url
         }).then(function (response) {
             return {
                 productList: response.data,

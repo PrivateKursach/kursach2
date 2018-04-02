@@ -81,7 +81,7 @@ function ProductListController(productService, $state, $stateParams, $cookies, $
         }
 
         var offset = (page - 1) * limit;
-        var promise = productService.getAllProducts(offset, limit);
+        var promise = productService.getAllProducts(offset, limit, $ctrl.filterTypesIds);
         promise.then(function (response) {
             $ctrl.productList = response.productList;
             $ctrl.totalItems = response.totalCount;

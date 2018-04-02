@@ -24,16 +24,18 @@ public class ProductController {
     public ResponseEntity<List<ProductDTO>> getProducts(
             @RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
             @RequestParam(value = "limit", required = false, defaultValue = "20") Integer limit,
-            @RequestParam(value = "type", required = false) Set<Long> types) {
+            @RequestParam(value = "type", required = false) Set<Long> types,
+            @RequestParam(value = "minPrice", required = false) Integer minPrice,
+            @RequestParam(value = "maxPrice", required = false) Integer maxPrice) {
 
         Long numberOfProducts;
         List<ProductDTO> productDTOList;
         if (types == null) {
-            numberOfProducts = productService.getNumberOfProducts();
-            productDTOList = productService.getProducts(offset, limit);
+            numberOfProducts = productService.getNumberOfProducts(minPrice, maxPrice);
+            productDTOList = productService.getProducts(offset, limit, minPrice, maxPrice);
         } else {
-            numberOfProducts = productService.getNumberOfProductsByTypes(types);
-            productDTOList = productService.getProductsByTypes(offset, limit, types);
+            numberOfProducts = productService.getNumberOfProductsByTypes(types, minPrice, maxPrice);
+            productDTOList = productService.getProductsByTypes(offset, limit, types, minPrice, maxPrice);
         }
         return ResponseEntity.ok().header(TOTAL_COUNT_HEADER_NAME, String.valueOf(numberOfProducts)).body(productDTOList);
     }

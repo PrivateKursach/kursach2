@@ -20,24 +20,24 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, ProductDTO, 
     private ProductDTOConverter productDTOConverter;
 
     @Override
-    public List<ProductDTO> getProducts(int offset, int limit) {
-        List<Product> products = productDAO.getProducts(offset, limit);
+    public List<ProductDTO> getProducts(int offset, int limit, Integer minPrice, Integer maxPrice) {
+        List<Product> products = productDAO.getProducts(offset, limit, minPrice, maxPrice);
         return productDTOConverter.getDtoList(products);
     }
 
     @Override
-    public Long getNumberOfProducts() {
-        return productDAO.getNumberOfProducts();
+    public Long getNumberOfProducts(Integer minPrice, Integer maxPrice) {
+        return productDAO.getNumberOfProducts(minPrice, maxPrice);
     }
 
     @Override
-    public List<ProductDTO> getProductsByTypes(int offset, int limit, Set<Long> typesIds) {
-        return productDTOConverter.getDtoList(productDAO.getProductsByTypes(offset, limit, typesIds));
+    public List<ProductDTO> getProductsByTypes(int offset, int limit, Set<Long> typesIds, Integer minPrice, Integer maxPrice) {
+        return productDTOConverter.getDtoList(productDAO.getProductsByTypes(offset, limit, typesIds, minPrice, maxPrice));
     }
 
     @Override
-    public Long getNumberOfProductsByTypes(Set<Long> typesIds) {
-        return productDAO.getNumberOfProductsByTypes(typesIds);
+    public Long getNumberOfProductsByTypes(Set<Long> typesIds, Integer minPrice, Integer maxPrice) {
+        return productDAO.getNumberOfProductsByTypes(typesIds, minPrice, maxPrice);
     }
 
     @Autowired

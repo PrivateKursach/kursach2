@@ -47,3 +47,24 @@ CREATE TABLE `electronic_shop`.`es_order_product` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+CREATE TABLE `electronic_shop`.`es_product_type` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `electronic_shop`.`es_product_product_type` (
+  `product_id` BIGINT(20) NOT NULL,
+  `product_type_id` INT NOT NULL,
+  PRIMARY KEY (`product_id`, `product_type_id`),
+  INDEX `es_product_product_type_fk2_idx` (`product_type_id` ASC),
+  CONSTRAINT `es_product_product_type_fk1`
+  FOREIGN KEY (`product_id`)
+  REFERENCES `electronic_shop`.`es_product` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `es_product_product_type_fk2`
+  FOREIGN KEY (`product_type_id`)
+  REFERENCES `electronic_shop`.`es_product_type` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+

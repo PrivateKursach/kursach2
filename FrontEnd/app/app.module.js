@@ -23,6 +23,8 @@ import {esCartComponent} from './es-cart/es-cart.component';
 import {esBackButtonComponent} from './es-back-button/es-back-button.component';
 import {esProductComponent} from './es-product/es-product.component';
 import {esAddProductModalComponent} from './es-add-product-modal/es-add-product-modal.component';
+import {esEditProductModalComponent} from './es-edit-product-modal/es-edit-product-modal.component';
+import {esDeleteProductModalComponent} from './es-delete-product-modal/es-delete-product-modal.component';
 
 angular.module("app", [ngCookies, uirouter, pascalprechttranslate, uibootstrap])
     .config(routing)
@@ -41,4 +43,6 @@ angular.module("app", [ngCookies, uirouter, pascalprechttranslate, uibootstrap])
     .component("esCart", esCartComponent)
     .component("esBackButton", esBackButtonComponent)
     .component("esProduct", esProductComponent)
-    .component("esAddProductModal", esAddProductModalComponent);
+    .component("esAddProductModal", esAddProductModalComponent)
+    .component("esEditProductModal", esEditProductModalComponent)
+    .component("esDeleteProductModal", esDeleteProductModalComponent);

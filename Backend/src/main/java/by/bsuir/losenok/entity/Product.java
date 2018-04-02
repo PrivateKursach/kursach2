@@ -1,9 +1,6 @@
 package by.bsuir.losenok.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -16,6 +13,7 @@ public class Product extends EntityObject<Long> {
     private Integer price;
 
     private Set<Order> orders;
+    private Set<ProductType> types;
 
     @Column(name = "name")
     public String getName() {
@@ -60,5 +58,15 @@ public class Product extends EntityObject<Long> {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "es_product_product_type", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "product_type_id"))
+    public Set<ProductType> getTypes() {
+        return types;
+    }
+
+    public void setTypes(Set<ProductType> types) {
+        this.types = types;
     }
 }

@@ -31,4 +31,21 @@ export default function productService($http) {
             return response.data;
         });
     };
+
+    service.editProduct = function (product) {
+        return $http({
+            method : "PUT",
+            url : ES_REST_SERVER_URI + "/products/" + product.id,
+            data : product
+        }).then(function (response) {
+            return response.data;
+        });
+    };
+
+    service.deleteProduct = function (productId) {
+        return $http({
+            method : "DELETE",
+            url : ES_REST_SERVER_URI + "/products/" + productId
+        });
+    };
 }

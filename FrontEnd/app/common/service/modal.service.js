@@ -7,23 +7,23 @@ export default function modalService($uibModal) {
         });
     };
 
-    service.openEditProductModal = function (newsId) {
+    service.openEditProductModal = function (productId) {
         return $uibModal.open({
             component : "esEditProductModal",
             resolve : {
-                newsId : function () {
-                    return newsId;
+                productId : function () {
+                    return productId;
                 }
             }
         });
     };
 
-    service.openDeleteProductModal = function (newsId) {
+    service.openDeleteProductModal = function (productId) {
         return $uibModal.open({
             component : "esDeleteProductModal",
             resolve : {
-                newsId : function () {
-                    return newsId;
+                productId : function () {
+                    return productId;
                 }
             }
         });

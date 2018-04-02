@@ -3,7 +3,7 @@ var esOrderListComponent = {
     controller : OrderListController
 };
 
-function OrderListController(orderService, modalService, sessionService, $rootScope) {
+function OrderListController(orderService, modalService, sessionService, $rootScope, $stateParams) {
     var $ctrl = this;
 
     $ctrl.$onInit = function () {
@@ -12,6 +12,13 @@ function OrderListController(orderService, modalService, sessionService, $rootSc
     
     $ctrl.isAdmin = function () {
         return sessionService.isAdmin($rootScope);
+    };
+
+    $ctrl.getStateInfo = function () {
+        return {
+            name: "orders",
+            params: $stateParams
+        };
     };
     
     $ctrl.acceptOrder = function (orderId) {

@@ -52,6 +52,17 @@ function orderService($http) {
             return data;
         });
     };
+
+    service.getOrderById = function (orderId) {
+        return $http({
+            method: "GET",
+            url: "http://localhost:8081/rest/orders/" + orderId
+        }).then(function (response) {
+            var data = response.data;
+            data.status = getStatusString(data.status);
+            return data;
+        });
+    };
     
     function getStatusString(statusId) {
         if (statusId == 1) {

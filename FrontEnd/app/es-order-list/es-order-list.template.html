@@ -1,0 +1,23 @@
+<div class="alert alert-danger" ng-show="$ctrl.errorMessage">
+    {{ $ctrl.errorMessage }}
+</div>
+<div class="alert alert-info" ng-show="$ctrl.orderList.length == 0">
+    Список заказов пуст
+</div>
+
+<div ng-if="$ctrl.totalItems > $ctrl.itemsPerPage">
+    <es-product-list-pagination current-page="$ctrl.currentPage" items-per-page="$ctrl.itemsPerPage" total-items="$ctrl.totalItems" on-page-changed="$ctrl.pageChanged(currentPage)" on-items-per-page-changed="$ctrl.itemsPerPageChanged(itemsPerPage)"></es-product-list-pagination>
+</div>
+
+<div class="well clearfix" ng-repeat="order in $ctrl.orderList">
+    <h3><a ui-sref="order({ orderId : order.id, prevState : $ctrl.getStateInfo() })">Заказ №{{ order.id }}</a></h3>
+    <p>Сумма: {{ order.id }} р.</p>
+    <p>Заказчик: {{ order.user.email }}</p>
+    <div class="buttons-block">
+        <a class="btn btn-sm btn-primary" ng-click="$ctrl.acceptOrder(order.id)">Принять заказ</a>
+    </div>
+</div>
+
+<div ng-if="$ctrl.totalItems > $ctrl.itemsPerPage">
+    <es-product-list-pagination current-page="$ctrl.currentPage" items-per-page="$ctrl.itemsPerPage" total-items="$ctrl.totalItems" on-page-changed="$ctrl.pageChanged(currentPage)" on-items-per-page-changed="$ctrl.itemsPerPageChanged(itemsPerPage)"></es-product-list-pagination>
+</div>

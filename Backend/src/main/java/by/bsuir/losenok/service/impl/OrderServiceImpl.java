@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Transactional
@@ -17,6 +18,21 @@ public class OrderServiceImpl extends GenericServiceImpl<Order, OrderDTO, Long> 
 
     private OrderDAO orderDAO;
     private OrderDTOConverter orderDTOConverter;
+
+    @Override
+    public List<OrderDTO> getAllOrders(int offset, int limit) {
+        return orderDTOConverter.getDtoList(orderDAO.getAllOrders(offset, limit));
+    }
+
+    @Override
+    public Long getAllOrdersNumber() {
+        return orderDAO.getAllOrdersNumber();
+    }
+
+    @Override
+    public List<OrderDTO> getOrdersByUser(Long userId) {
+        return orderDTOConverter.getDtoList(orderDAO.getOrdersByUser(userId));
+    }
 
     @Override
     public OrderDTO add(OrderDTO dto) {

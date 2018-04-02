@@ -68,3 +68,6 @@ CREATE TABLE `electronic_shop`.`es_product_product_type` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+ALTER TABLE `electronic_shop`.`es_order`
+  ADD COLUMN `total_price` INT NULL AFTER `created_date`,
+  ADD COLUMN `status` INT NULL AFTER `total_price`;

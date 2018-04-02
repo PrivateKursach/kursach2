@@ -2,6 +2,9 @@ package by.bsuir.losenok.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductDTO extends DTO<Long> {
     private static final long serialVersionUID = -6591529583863284248L;
@@ -10,6 +13,7 @@ public class ProductDTO extends DTO<Long> {
     private String description;
     private String imageUrl;
     private Integer price;
+    private List<ProductTypeDTO> types = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -41,5 +45,13 @@ public class ProductDTO extends DTO<Long> {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public List<ProductTypeDTO> getTypes() {
+        return types;
+    }
+
+    public void setTypes(List<ProductTypeDTO> types) {
+        this.types = types;
     }
 }

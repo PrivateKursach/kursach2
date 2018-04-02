@@ -3,6 +3,7 @@ package by.bsuir.losenok.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -10,7 +11,7 @@ public class OrderDTO extends DTO<Long> {
 
     private UserDTO user;
     private LocalDate createdDate;
-    private List<ProductDTO> products;
+    private List<ProductDTO> products = new ArrayList<>();
 
     public UserDTO getUser() {
         return user;

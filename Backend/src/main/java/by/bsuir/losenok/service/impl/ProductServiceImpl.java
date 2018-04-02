@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -27,6 +28,16 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, ProductDTO, 
     @Override
     public Long getNumberOfProducts() {
         return productDAO.getNumberOfProducts();
+    }
+
+    @Override
+    public List<ProductDTO> getProductsByTypes(int offset, int limit, Set<Long> typesIds) {
+        return productDTOConverter.getDtoList(productDAO.getProductsByTypes(offset, limit, typesIds));
+    }
+
+    @Override
+    public Long getNumberOfProductsByTypes(Set<Long> typesIds) {
+        return productDAO.getNumberOfProductsByTypes(typesIds);
     }
 
     @Autowired

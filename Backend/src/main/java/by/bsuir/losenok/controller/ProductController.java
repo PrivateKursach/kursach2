@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @CrossOrigin
@@ -22,10 +23,18 @@ public class ProductController {
     @CrossOrigin(exposedHeaders = "X-Total-Count")
     public ResponseEntity<List<ProductDTO>> getProducts(
             @RequestParam(value = "offset", required = false, defaultValue = "0") Integer offset,
-            @RequestParam(value = "limit", required = false, defaultValue = "20") Integer limit) {
+            @RequestParam(value = "limit", required = false, defaultValue = "20") Integer limit,
+            @RequestParam(value = "type", required = false) Set<Long> types) {
 
-        Long numberOfProducts = productService.getNumberOfProducts();
-        List<ProductDTO> productDTOList = productService.getProducts(offset, limit);
+        Long numberOfProducts;
+        List<ProductDTO> productDTOList;
+        if (types == null) {
+            numberOfProducts = productService.getNumberOfProducts();
+            productDTOList = productService.getProducts(offset, limit);
+        } else {
+            numberOfProducts = productService.getNumberOfProductsByTypes(types);
+            productDTOList = productService.getProductsByTypes(offset, limit, types);
+        }
         return ResponseEntity.ok().header(TOTAL_COUNT_HEADER_NAME, String.valueOf(numberOfProducts)).body(productDTOList);
     }
 

@@ -1,5 +1,5 @@
-export var esProductListPaginationComponent = {
-    template: require('./es-product-list-pagination.template.html'),
+var esProductListPaginationComponent = {
+    templateUrl: './es-product-list-pagination/es-product-list-pagination.template.html',
     controller: ProductListPaginationController,
     bindings: {
         currentPage: '<',

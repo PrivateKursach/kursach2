@@ -1,5 +1,5 @@
-export var esProductListComponent = {
-    template : require("./es-product-list.template.html"),
+var esProductListComponent = {
+    templateUrl : "./es-product-list/es-product-list.template.html",
     controller : ProductListController
 };
 

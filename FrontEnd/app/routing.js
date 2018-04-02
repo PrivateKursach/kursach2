@@ -1,4 +1,4 @@
-export default function routing($stateProvider, $urlRouterProvider) {
+function routing($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
 
     var welcomeState = {
@@ -65,10 +65,17 @@ export default function routing($stateProvider, $urlRouterProvider) {
         }
     };
 
+    var ordersState = {
+        name : "orders",
+        url : "/orders",
+        component : "esOrderList"
+    };
+
     $stateProvider.state(welcomeState);
     $stateProvider.state(productListState);
     $stateProvider.state(registrationState);
     $stateProvider.state(loginState);
     $stateProvider.state(cartState);
     $stateProvider.state(productState);
+    $stateProvider.state(ordersState);
 }

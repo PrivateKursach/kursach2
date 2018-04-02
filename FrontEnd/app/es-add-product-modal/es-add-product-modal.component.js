@@ -1,5 +1,5 @@
-export var esAddProductModalComponent = {
-    template : require("./es-add-product-modal.template.html"),
+esAddProductModalComponent = {
+    templateUrl : "./es-add-product-modal/es-add-product-modal.template.html",
     controller : AddProductModalController,
     bindings: {
         resolve: '<',

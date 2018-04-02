@@ -1,5 +1,5 @@
-export var esEditProductModalComponent = {
-    template : require("./es-edit-product-modal.template.html"),
+var esEditProductModalComponent = {
+    templateUrl : "./es-edit-product-modal/es-edit-product-modal.template.html",
     controller : EditProductModalController,
     bindings : {
         resolve: '<',

@@ -1,4 +1,4 @@
-export default function errorMessageService() {
+function errorMessageService() {
     var service = this;
 
     service.getErrorMessageByHttpCode = function (httpCode) {

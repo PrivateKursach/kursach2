@@ -1,4 +1,4 @@
-export default function modalService($uibModal) {
+function modalService($uibModal) {
     var service = this;
 
     service.openAddProductModal = function () {

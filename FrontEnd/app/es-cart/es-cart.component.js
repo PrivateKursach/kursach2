@@ -1,5 +1,5 @@
-export var esCartComponent = {
-    template : require("./es-cart.template.html"),
+var esCartComponent = {
+    templateUrl : "./es-cart/es-cart.template.html",
     controller : CartController
 };
 

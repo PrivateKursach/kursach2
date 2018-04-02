@@ -1,5 +1,5 @@
-export var esLoginComponent = {
-    template: require("./es-login.template.html"),
+var esLoginComponent = {
+    templateUrl: "./es-login/es-login.template.html",
     controller: LoginComponentController
 };
 

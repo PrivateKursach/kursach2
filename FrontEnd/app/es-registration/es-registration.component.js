@@ -1,5 +1,5 @@
-export var esRegistrationComponent = {
-    template: require("./es-registration.template.html"),
+var esRegistrationComponent = {
+    templateUrl: "./es-registration/es-registration.template.html",
     controller: RegistrationComponentController
 };
 

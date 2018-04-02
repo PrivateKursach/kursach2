@@ -1,5 +1,5 @@
-export var esBackButtonComponent = {
-    template : require("./es-back-button.template.html"),
+var esBackButtonComponent = {
+    templateUrl : "./es-back-button/es-back-button.template.html",
     controller : BackButtonController,
     bindings : {
         stateInfo: '<'

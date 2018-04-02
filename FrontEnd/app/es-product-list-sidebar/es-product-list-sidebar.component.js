@@ -1,5 +1,5 @@
-export var esProductListSidebarComponent = {
-    template: require('./es-product-list-sidebar.template.html'),
+var esProductListSidebarComponent = {
+    templateUrl: './es-product-list-sidebar/es-product-list-sidebar.template.html',
     controller: ProductListSidebarController,
     bindings: {
         innerCtrl: '=',

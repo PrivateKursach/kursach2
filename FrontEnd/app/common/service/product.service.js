@@ -1,8 +1,8 @@
-export default function productService($http) {
+function productService($http) {
     var service = this;
 
     service.getAllProducts = function (offset, limit, typesIds, minPrice, maxPrice) {
-        var url = ES_REST_SERVER_URI + "/products?offset=" + offset + "&limit=" + limit;
+        var url = "http://localhost:8081/rest/products?offset=" + offset + "&limit=" + limit;
         if (minPrice) {
             url = url + "&minPrice=" + minPrice;
         }
@@ -28,7 +28,7 @@ export default function productService($http) {
     service.getProductById = function (productId) {
         return $http({
             method: "GET",
-            url: ES_REST_SERVER_URI + "/products/" + productId
+            url: "http://localhost:8081/rest/products/" + productId
         }).then(function (response) {
             return response.data;
         });
@@ -37,7 +37,7 @@ export default function productService($http) {
     service.addProduct = function (product) {
         return $http({
             method : "POST",
-            url : ES_REST_SERVER_URI + "/products",
+            url : "http://localhost:8081/rest/products",
             data : product
         }).then(function (response) {
             return response.data;
@@ -47,7 +47,7 @@ export default function productService($http) {
     service.editProduct = function (product) {
         return $http({
             method : "PUT",
-            url : ES_REST_SERVER_URI + "/products/" + product.id,
+            url : "http://localhost:8081/rest/products/" + product.id,
             data : product
         }).then(function (response) {
             return response.data;
@@ -57,7 +57,7 @@ export default function productService($http) {
     service.deleteProduct = function (productId) {
         return $http({
             method : "DELETE",
-            url : ES_REST_SERVER_URI + "/products/" + productId
+            url : "http://localhost:8081/rest/products/" + productId
         });
     };
 }

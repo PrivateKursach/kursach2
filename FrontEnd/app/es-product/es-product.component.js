@@ -1,5 +1,5 @@
-export var esProductComponent = {
-    template : require("./es-product.template.html"),
+var esProductComponent = {
+    templateUrl : "./es-product/es-product.template.html",
     controller : ProductController,
     bindings : {
         product : '<'

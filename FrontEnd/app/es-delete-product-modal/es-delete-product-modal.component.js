@@ -1,5 +1,5 @@
-export var esDeleteProductModalComponent = {
-    template : require("./es-delete-product-modal.template.html"),
+var esDeleteProductModalComponent = {
+    templateUrl : "./es-delete-product-modal/es-delete-product-modal.template.html",
     controller : DeleteProductModalController,
     bindings : {
         resolve: '<',

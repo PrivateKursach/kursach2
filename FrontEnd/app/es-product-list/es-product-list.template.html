@@ -23,6 +23,7 @@
 
     <div class="well clearfix" ng-repeat="product in $ctrl.productList">
         <h3><a ui-sref="product({ productId : product.id, prevState : $ctrl.getStateInfo() })">{{ product.name }}</a></h3>
+        <p><span class="tag" ng-repeat="type in product.types">{{ type.name }}</span></p>
         <p>Цена: {{ product.price }} р.</p>
         <p>{{ product.description }}</p>
         <div class="buttons-block">

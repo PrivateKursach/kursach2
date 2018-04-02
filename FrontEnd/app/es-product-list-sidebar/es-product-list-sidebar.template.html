@@ -9,4 +9,16 @@
         </ul>
     </div>
 
+    <div class="sidebar-block">
+        <h3>Цена</h3>
+        <div class="form-group">
+            <label for="min_price">От:</label>
+            <input type="number" class="form-control" id="min_price" name="min_price" ng-model="$ctrl.minPrice" required>
+        </div>
+        <div class="form-group">
+            <label for="max_price">До:</label>
+            <input type="number" class="form-control" id="max_price" name="max_price" ng-model="$ctrl.maxPrice" required>
+        </div>
+        <button type="button" class="btn btn-default" ng-click="$ctrl.searchByPrice()">Искать</button>
+    </div>
 </div>

@@ -10,6 +10,8 @@ function ProductListController(productService, $state, $stateParams, $cookies, $
 
     $ctrl.$onInit = function () {
         $ctrl.filterTypesIds = ($stateParams.type) ? $stateParams.type.toString().split(",") : [];
+        $ctrl.filterMinPrice = parseInt($stateParams.minPrice, 10);
+        $ctrl.filterMaxPrice = parseInt($stateParams.maxPrice, 10);
 
         setProductList();
         populateCart();
@@ -23,8 +25,8 @@ function ProductListController(productService, $state, $stateParams, $cookies, $
         };
     };
 
-    $ctrl.sidebarUpdated = function (typesIds) {
-        $state.go('.', { page: 1, type: (typesIds.length == 0) ? null : typesIds.toString()}, { notify: false });
+    $ctrl.sidebarUpdated = function (typesIds, minPrice, maxPrice) {
+        $state.go('.', { page: 1, type: (typesIds.length == 0) ? null : typesIds.toString(), minPrice: minPrice, maxPrice: maxPrice}, { notify: false });
     };
 
     $ctrl.pageChanged = function (currentPage) {
@@ -81,7 +83,7 @@ function ProductListController(productService, $state, $stateParams, $cookies, $
         }
 
         var offset = (page - 1) * limit;
-        var promise = productService.getAllProducts(offset, limit, $ctrl.filterTypesIds);
+        var promise = productService.getAllProducts(offset, limit, $ctrl.filterTypesIds, $ctrl.filterMinPrice, $ctrl.filterMaxPrice);
         promise.then(function (response) {
             $ctrl.productList = response.productList;
             $ctrl.totalItems = response.totalCount;

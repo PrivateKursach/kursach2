@@ -1,8 +1,14 @@
 export default function productService($http) {
     var service = this;
 
-    service.getAllProducts = function (offset, limit, typesIds) {
+    service.getAllProducts = function (offset, limit, typesIds, minPrice, maxPrice) {
         var url = ES_REST_SERVER_URI + "/products?offset=" + offset + "&limit=" + limit;
+        if (minPrice) {
+            url = url + "&minPrice=" + minPrice;
+        }
+        if (maxPrice) {
+            url = url + "&maxPrice=" + maxPrice;
+        }
         if (typesIds) {
             typesIds.forEach(function (item, i, typesIds) {
                 url = url + "&type=" + item;

@@ -3,7 +3,7 @@ export default function routing($stateProvider, $urlRouterProvider) {
 
     var welcomeState = {
         name: "welcome",
-        url: "/?page&limit&type",
+        url: "/?page&limit&type&minPrice&maxPrice",
         component: "esProductList",
         params: {
             page: {
@@ -19,7 +19,7 @@ export default function routing($stateProvider, $urlRouterProvider) {
 
     var productListState = {
         name: "productList",
-        url: "/products?page&limit&type",
+        url: "/products?page&limit&type&minPrice&maxPrice",
         component: "esProductList",
         params: {
             page: {

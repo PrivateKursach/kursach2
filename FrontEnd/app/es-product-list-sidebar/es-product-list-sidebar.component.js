@@ -4,6 +4,8 @@ export var esProductListSidebarComponent = {
     bindings: {
         innerCtrl: '=',
         typesIds: '<',
+        minPrice: '<',
+        maxPrice: '<',
         onUpdate: '&'
     }
 };
@@ -34,11 +36,15 @@ function ProductListSidebarController(productTypeService, errorMessageService) {
             $ctrl.typesIds.splice(indexOfType, 1);
         }
 
-        $ctrl.onUpdate({ typesIds: $ctrl.typesIds });
+        $ctrl.onUpdate({ typesIds: $ctrl.typesIds, minPrice: $ctrl.minPrice, maxPrice: $ctrl.maxPrice });
+    };
+
+    $ctrl.searchByPrice = function () {
+        $ctrl.onUpdate({ typesIds: $ctrl.typesIds, minPrice: $ctrl.minPrice, maxPrice: $ctrl.maxPrice });
     };
 
     $ctrl.resetFilters = function () {
-        $ctrl.onUpdate({ typesIds: [] });
+        $ctrl.onUpdate({ typesIds: [], minPrice: null, maxPrice: null });
     };
 
     function setDefaultTypes() {

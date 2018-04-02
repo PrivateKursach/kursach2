@@ -12,6 +12,7 @@ import productService from './common/service/product.service';
 import orderService from './common/service/order.service';
 import modalService from './common/service/modal.service';
 import errorMessageService from './common/service/error-message.service';
+import productTypeService from './common/service/product-type.service';
 
 import {esIndexComponent} from './es-index/es-index.component';
 import {esProductListComponent} from './es-product-list/es-product-list.component';
@@ -34,6 +35,7 @@ angular.module("app", [ngCookies, uirouter, pascalprechttranslate, uibootstrap])
     .service("orderService", orderService)
     .service("modalService", modalService)
     .service("errorMessageService", errorMessageService)
+    .service("productTypeService", productTypeService)
     .component("esIndex", esIndexComponent)
     .component("esProductList", esProductListComponent)
     .component("esLogin", esLoginComponent)

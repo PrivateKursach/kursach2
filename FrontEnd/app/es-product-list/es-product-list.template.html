@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-md-4 sidebar">
-    <es-product-list-sidebar></es-product-list-sidebar>
+    <es-product-list-sidebar types-ids="$ctrl.filterTypesIds" on-update="$ctrl.sidebarUpdated(typesIds)" inner-ctrl="$ctrl.sidebarCtrl"></es-product-list-sidebar>
 </div>
 
 <div class="col-lg-9 col-md-8">

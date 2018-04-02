@@ -9,6 +9,8 @@ function ProductListController(productService, $state, $stateParams, $cookies, $
     $ctrl.cart = [];
 
     $ctrl.$onInit = function () {
+        $ctrl.filterTypesIds = ($stateParams.type) ? $stateParams.type.toString().split(",") : [];
+
         setProductList();
         populateCart();
         $ctrl.root = $rootScope;
@@ -19,6 +21,10 @@ function ProductListController(productService, $state, $stateParams, $cookies, $
             name: "welcome",
             params: $stateParams
         };
+    };
+
+    $ctrl.sidebarUpdated = function (typesIds) {
+        $state.go('.', { page: 1, type: (typesIds.length == 0) ? null : typesIds.toString()}, { notify: false });
     };
 
     $ctrl.pageChanged = function (currentPage) {

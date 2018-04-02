@@ -44,9 +44,16 @@ export default function routing($stateProvider, $urlRouterProvider) {
         url: "/login",
         component: "esLogin"
     };
+    
+    var cartState = {
+        name: "cart",
+        url: "/cart",
+        component: "esCart"
+    };
 
     $stateProvider.state(welcomeState);
     $stateProvider.state(productListState);
     $stateProvider.state(registrationState);
     $stateProvider.state(loginState);
+    $stateProvider.state(cartState);
 }

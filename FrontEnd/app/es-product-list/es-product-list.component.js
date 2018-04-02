@@ -3,11 +3,14 @@ export var esProductListComponent = {
     controller : ProductListController
 };
 
-function ProductListController(productService, $state, $stateParams) {
+function ProductListController(productService, $state, $stateParams, $cookies) {
     var $ctrl = this;
+
+    $ctrl.cart = [];
 
     $ctrl.$onInit = function () {
         setProductList();
+        populateCart();
     };
 
     $ctrl.getStateInfo = function () {
@@ -25,8 +28,32 @@ function ProductListController(productService, $state, $stateParams) {
         $state.go('.', { page: 1, limit: itemsPerPage }, { notify: false });
     };
 
-    $ctrl.addToChart = function (newsId) {
+    $ctrl.addToCart = function (product) {
+        $ctrl.cart.push(product);
+        $cookies.putObject("cartData", $ctrl.cart);
+    };
 
+    $ctrl.inCart = function (productId) {
+        var inCart = false;
+        $ctrl.cart.forEach(function(item, i, arr) {
+            if (item.id == productId) {
+                inCart = true;
+            }
+        });
+        return inCart;
+    };
+
+    $ctrl.removeFromCart = function (productId) {
+        var indexOf = -1;
+        $ctrl.cart.forEach(function(item, i, arr) {
+            if (item.id == productId) {
+                indexOf = i;
+            }
+        });
+        if (indexOf > -1) {
+            $ctrl.cart.splice(indexOf, 1);
+        }
+        $cookies.putObject("cartData", $ctrl.cart);
     };
 
     var availableLimits  = [10, 20, 30, 50];
@@ -48,5 +75,11 @@ function ProductListController(productService, $state, $stateParams) {
         }, function (errResponse) {
             $ctrl.errorMessage = "Гауно";
         });
+    }
+
+    function populateCart() {
+        if ($cookies.get('cartData')) {
+            $ctrl.cart =  $cookies.getObject('cartData');
+        }
     }
 }

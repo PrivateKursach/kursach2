@@ -26,7 +26,8 @@
         <p>Цена: {{ product.price }} р.</p>
         <p>{{ product.description }}</p>
         <div class="buttons-block">
-            <a class="btn btn-sm btn-primary" ng-click="$ctrl.addToCart(product.id)">В корзину</a>
+            <a class="btn btn-sm btn-primary" ng-if="!$ctrl.inCart(product.id)" ng-click="$ctrl.addToCart(product)">В корзину</a>
+            <a class="btn btn-sm btn-default" ng-if="$ctrl.inCart(product.id)" ng-click="$ctrl.removeFromCart(product.id)">Удалить из корзины</a>
         </div>
     </div>
 

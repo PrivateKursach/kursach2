@@ -70,6 +70,12 @@ function routing($stateProvider, $urlRouterProvider) {
         url : "/orders",
         component : "esOrderList"
     };
+    
+    var productTypesState = {
+        name: "productTypes",
+        url: "/productTypes",
+        component: "esProductTypeList"
+    };
 
     $stateProvider.state(welcomeState);
     $stateProvider.state(productListState);
@@ -78,4 +84,5 @@ function routing($stateProvider, $urlRouterProvider) {
     $stateProvider.state(cartState);
     $stateProvider.state(productState);
     $stateProvider.state(ordersState);
+    $stateProvider.state(productTypesState);
 }

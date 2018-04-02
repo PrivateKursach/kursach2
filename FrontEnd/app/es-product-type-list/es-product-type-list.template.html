@@ -1,0 +1,20 @@
+<div class="clearfix">
+    <div class="buttons-block">
+        <button ng-if="$ctrl.isAdmin()" ng-click="$ctrl.openAddProductTypeModal()" class="btn btn-primary btn-md">Добавить новую категорию</button>
+    </div>
+</div>
+
+<div class="alert alert-danger" ng-show="$ctrl.errorMessage">
+    {{ $ctrl.errorMessage }}
+</div>
+<div class="alert alert-info" ng-show="$ctrl.productTypeList.length == 0">
+    Категории отсутствуют
+</div>
+
+<div class="well clearfix" ng-repeat="productType in $ctrl.productTypeList">
+    <h3>{{ productType.name }}</a></h3>
+    <div class="buttons-block">
+        <a class="btn btn-sm btn-primary" ng-click="$ctrl.openEditProductTypeModal(productType.id)">Редактирование</a>
+        <a class="btn btn-sm btn-default" ng-click="$ctrl.openDeleteProductTypeModal(productType.id)">Удаление</a>
+    </div>
+</div>

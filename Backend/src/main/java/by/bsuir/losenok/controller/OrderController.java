@@ -31,4 +31,11 @@ public class OrderController {
         List<OrderDTO> orderDTOList = orderService.getAllOrders(offset, limit);
         return ResponseEntity.ok().header(TOTAL_COUNT_HEADER_NAME, String.valueOf(ordersNumber)).body(orderDTOList);
     }
+
+    @PutMapping("/{orderId}")
+    public ResponseEntity<OrderDTO> acceptOrder(@PathVariable Long orderId, @RequestBody OrderDTO orderToAccept) {
+        OrderDTO orderDTO = orderService.getById(orderId);
+        orderDTO.setStatus(2);
+        return ResponseEntity.ok(orderService.update(orderDTO));
+    }
 }

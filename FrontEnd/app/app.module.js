@@ -51,4 +51,6 @@ angular.module("app", ["ngCookies", "ui.router", "ui.bootstrap", "ng-fusionchart
     .component("esAddProductModal", esAddProductModalComponent)
     .component("esEditProductModal", esEditProductModalComponent)
     .component("esDeleteProductModal", esDeleteProductModalComponent)
-    .component("esOrderList", esOrderListComponent);
+    .component("esOrderList", esOrderListComponent)
+    .component("esAcceptOrderModal", esAcceptOrderModalComponent)
+    .component("esProductTypeList", esProductTypeListComponent);

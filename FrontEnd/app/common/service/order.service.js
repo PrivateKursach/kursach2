@@ -7,7 +7,9 @@ function orderService($http) {
             url: "http://localhost:8081/rest/orders",
             data: order
         }).then(function (response) {
-            return response.data;
+            var data = response.data;
+            data.status = getStatusString(data.status);
+            return data;
         });
     };
 
@@ -16,7 +18,11 @@ function orderService($http) {
             method: "GET",
             url: "http://localhost:8081/rest/users/" + userId + "/orders"
         }).then(function (response) {
-            return response.data;
+            var data = response.data;
+            data.forEach(function(item, i, arr) {
+                item.status = getStatusString(item.status);
+            });
+            return data;
         });
     };
 
@@ -25,7 +31,35 @@ function orderService($http) {
             method: "GET",
             url: "http://localhost:8081/rest/orders"
         }).then(function (response) {
-            return response.data;
+            var data = response.data;
+            data.forEach(function(item, i, arr) {
+                item.status = getStatusString(item.status);
+            });
+            return data;
         });
     };
+
+    service.acceptOrder = function (orderId) {
+        return $http({
+            method: "PUT",
+            url: "http://localhost:8081/rest/orders/" + orderId,
+            data: {
+                status: 2
+            }
+        }).then(function (response) {
+            var data = response.data;
+            data.status = getStatusString(data.status);
+            return data;
+        });
+    };
+    
+    function getStatusString(statusId) {
+        if (statusId == 1) {
+            return "На рассмотрении";
+        } else if (statusId == 2) {
+            return "Принят";
+        } else {
+            return "";
+        }
+    }
 }

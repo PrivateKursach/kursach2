@@ -27,6 +27,8 @@ public class OrderDTOConverter implements DTOConverter<Order, OrderDTO> {
         orderDTO.setId(entity.getId());
         orderDTO.setUser(userDTOConverter.getDto(entity.getUser()));
         orderDTO.setCreatedDate(entity.getCreatedDate());
+        orderDTO.setTotalPrice(entity.getTotalPrice());
+        orderDTO.setStatus(entity.getStatus());
         orderDTO.setProducts(productDTOConverter.getDtoList(new ArrayList<>(entity.getProducts())));
         return orderDTO;
     }
@@ -37,6 +39,8 @@ public class OrderDTOConverter implements DTOConverter<Order, OrderDTO> {
         order.setId(dto.getId());
         order.setUser(userDTOConverter.getEntity(dto.getUser()));
         order.setCreatedDate(dto.getCreatedDate());
+        order.setTotalPrice(dto.getTotalPrice());
+        order.setStatus(dto.getStatus());
         if (!dto.getProducts().isEmpty()) {
             Set<Product> products = new HashSet<>(dto.getProducts().size());
             products.addAll(dto.getProducts().stream().map(productDTO -> productDTOConverter.getEntity(productDTO)).collect(Collectors.toList()));

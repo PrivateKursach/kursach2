@@ -9,6 +9,8 @@ import java.util.Set;
 public class Order extends EntityObject<Long> {
 
     private LocalDate createdDate;
+    private Integer totalPrice;
+    private Integer status;
     private User user;
     private Set<Product> products;
 
@@ -19,6 +21,24 @@ public class Order extends EntityObject<Long> {
 
     public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
+    }
+
+    @Column(name = "total_price")
+    public Integer getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Integer totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    @Column(name = "status")
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)

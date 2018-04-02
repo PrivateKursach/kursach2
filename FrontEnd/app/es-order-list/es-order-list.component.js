@@ -3,11 +3,18 @@ var esOrderListComponent = {
     controller : OrderListController
 };
 
-function OrderListController(orderService, sessionService, $rootScope) {
+function OrderListController(orderService, modalService, sessionService, $rootScope) {
     var $ctrl = this;
 
     $ctrl.$onInit = function () {
         setOrders();
+    };
+    
+    $ctrl.acceptOrder = function (orderId) {
+        var modalInstance = modalService.openAcceptOrderModal(orderId);
+        modalInstance.result.then(function () {
+            setOrders();
+        });
     };
     
     function setOrders() {

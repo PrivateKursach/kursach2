@@ -16,6 +16,6 @@ export default function sessionService($http) {
     };
     
     service.isAdmin = function (rootScope) {
-        return rootScope.sessionRole == 'Admin';
+        return rootScope.sessionRole == 0;
     };
 }

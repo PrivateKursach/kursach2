@@ -1,0 +1,16 @@
+<es-back-button state-info="$ctrl.prevState"></es-back-button>
+
+<div class="jumbotron">
+    <div class="alert alert-danger" ng-show="$ctrl.errorMessage">
+        {{ $ctrl.errorMessage }}
+    </div>
+    <div ng-show="$ctrl.product">
+        <h3>{{ $ctrl.product.name }}</h3>
+        <p>Цена: {{ $ctrl.product.price }} р.</p>
+        <p>{{ $ctrl.product.description }}</p>
+        <div class="buttons-block">
+            <a class="btn btn-primary btn-md" ng-click="$ctrl.openEditProductModal($ctrl.product.id)">Редактирование</a>
+            <a class="btn btn-default btn-md" ng-click="$ctrl.openDeleteProductModal($ctrl.product.id)">Удаление</a>
+        </div>
+    </div>
+</div>

@@ -6,7 +6,7 @@
 
     <div class="clearfix">
         <div class="buttons-block">
-            <button class="btn btn-primary btn-md">Кнопачка</button>
+            <button ng-if="$ctrl.isAdmin()" ng-click="$ctrl.openAddProductModal()" class="btn btn-primary btn-md">Добавить новый продукт</button>
         </div>
     </div>
 

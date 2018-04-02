@@ -3,7 +3,7 @@ export var esProductListComponent = {
     controller : ProductListController
 };
 
-function ProductListController(productService, $state, $stateParams, $cookies) {
+function ProductListController(productService, $state, $stateParams, $cookies, $rootScope, sessionService, modalService) {
     var $ctrl = this;
 
     $ctrl.cart = [];
@@ -11,6 +11,7 @@ function ProductListController(productService, $state, $stateParams, $cookies) {
     $ctrl.$onInit = function () {
         setProductList();
         populateCart();
+        $ctrl.root = $rootScope;
     };
 
     $ctrl.getStateInfo = function () {
@@ -54,6 +55,14 @@ function ProductListController(productService, $state, $stateParams, $cookies) {
             $ctrl.cart.splice(indexOf, 1);
         }
         $cookies.putObject("cartData", $ctrl.cart);
+    };
+    
+    $ctrl.isAdmin = function () {
+        return sessionService.isAdmin($ctrl.root);
+    };
+
+    $ctrl.openAddProductModal = function () {
+        modalService.openAddProductModal();
     };
 
     var availableLimits  = [10, 20, 30, 50];

@@ -28,4 +28,14 @@ public class ProductController {
         List<ProductDTO> productDTOList = productService.getProducts(offset, limit);
         return ResponseEntity.ok().header(TOTAL_COUNT_HEADER_NAME, String.valueOf(numberOfProducts)).body(productDTOList);
     }
+
+    @GetMapping("/{productId}")
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable Long productId) {
+        return ResponseEntity.ok(productService.getById(productId));
+    }
+
+    @PostMapping
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
+        return ResponseEntity.ok(productService.add(productDTO));
+    }
 }

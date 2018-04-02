@@ -12,4 +12,23 @@ export default function productService($http) {
             };
         });
     };
+
+    service.getProductById = function (productId) {
+        return $http({
+            method: "GET",
+            url: ES_REST_SERVER_URI + "/products/" + productId
+        }).then(function (response) {
+            return response.data;
+        });
+    };
+
+    service.addProduct = function (product) {
+        return $http({
+            method : "POST",
+            url : ES_REST_SERVER_URI + "/products",
+            data : product
+        }).then(function (response) {
+            return response.data;
+        });
+    };
 }

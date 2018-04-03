@@ -12,7 +12,7 @@
 <div class="well clearfix" ng-repeat="order in $ctrl.orderList">
     <h3><a ui-sref="order({ orderId : order.id, prevState : $ctrl.getStateInfo() })">Заказ №{{ order.id }}</a></h3>
     <p>Сумма: {{ order.totalPrice }} р.</p>
-    <p>Заказчик: {{ order.user.email }}</p>
+    <p>Заказчик: {{ order.user.firstName }} {{ order.user.lastName }} ({{ order.user.email }})</p>
     <p>Статус: {{ order.status }}</p>
     <div class="buttons-block">
         <a class="btn btn-sm btn-primary" ng-if="$ctrl.isAdmin() && order.status != 'Принят'" ng-click="$ctrl.acceptOrder(order.id)">Принять заказ</a>

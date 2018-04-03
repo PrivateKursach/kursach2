@@ -27,7 +27,9 @@ public class ProductDTOConverter implements DTOConverter<Product, ProductDTO> {
         productDTO.setDescription(entity.getDescription());
         productDTO.setImageUrl(entity.getImageUrl());
         productDTO.setPrice(entity.getPrice());
-        productDTO.setTypes(productTypeDTOConverter.getDtoList(new ArrayList<>(entity.getTypes())));
+        if (entity.getTypes() != null) {
+            productDTO.setTypes(productTypeDTOConverter.getDtoList(new ArrayList<>(entity.getTypes())));
+        }
         return productDTO;
     }
 

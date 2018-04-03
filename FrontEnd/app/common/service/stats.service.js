@@ -1,10 +1,10 @@
-function sessionService($http) {
+function statsService($http) {
     var service = this;
 
-    service.getSalesByTypeStats = function () {
+    service.getSalesByTypesStats = function () {
         return $http({
             method: "GET",
-            url: "http://localhost:8081/rest/stats/sales-by-type"
+            url: "http://localhost:8081/rest/stats/sales-by-types"
         }).then(function (response) {
             return response.data;
         });

@@ -8,8 +8,13 @@ function StatsComponentController(statsService, errorMessageService) {
 
     $ctrl.$onInit = function () {
         statsService.getSalesByTypesStats().then(function (stats) {
-            $ctrl.stats = stats;
-            $ctrl.statsData = 
+            var data = [];
+            stats.forEach(function (item, i, array) {
+                data.push({
+                    label: item.productTypeName,
+                    datavalue: item.totalSales
+                })
+            });
             $ctrl.salesByTypeChartData = {
                 chart: {
                     caption: "Статистика продаж по категориям",
@@ -21,10 +26,10 @@ function StatsComponentController(statsService, errorMessageService) {
                     slicingdistance: "15",
                     showpercentvalues: "1",
                     showpercentintooltip: "0",
-                    plottooltext: "Категория : $productTypeName Продажи : $totalSales",
+                    plottooltext: "Категория : $label Продажи : $datavalue",
                     theme: "fint"
                 },
-                data: $ctrl.stats
+                data: data
             };
         });
     };

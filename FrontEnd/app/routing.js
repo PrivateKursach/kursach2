@@ -106,4 +106,5 @@ function routing($stateProvider, $urlRouterProvider) {
     $stateProvider.state(ordersState);
     $stateProvider.state(productTypesState);
     $stateProvider.state(orderState);
+    $stateProvider.state(statsState);
 }

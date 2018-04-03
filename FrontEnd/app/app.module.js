@@ -39,6 +39,7 @@ angular.module("app", ["ngCookies", "ui.router", "ui.bootstrap", "ng-fusionchart
     .service("modalService", modalService)
     .service("errorMessageService", errorMessageService)
     .service("productTypeService", productTypeService)
+    .service("statsService", statsService)
     .component("esIndex", esIndexComponent)
     .component("esProductList", esProductListComponent)
     .component("esLogin", esLoginComponent)

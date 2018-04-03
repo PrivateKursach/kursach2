@@ -30,4 +30,10 @@ public class OrderDAOImpl extends GenericDAOImpl<Order, Long> implements OrderDA
         TypedQuery<Order> query = entityManager.createQuery("select o from by.bsuir.losenok.entity.Order o where o.user.id = :userId", Order.class);
         return query.setParameter("userId", userId).getResultList();
     }
+
+    @Override
+    public Long getNumberOfOrdersByProduct(Long productId) {
+        TypedQuery<Long> query = entityManager.createQuery("select count(o.id) from by.bsuir.losenok.entity.Order o join o.products p where p.id = :productId", Long.class);
+        return query.setParameter("productId", productId).getSingleResult();
+    }
 }

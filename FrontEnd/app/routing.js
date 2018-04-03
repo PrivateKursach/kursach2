@@ -90,6 +90,12 @@ function routing($stateProvider, $urlRouterProvider) {
             prevState: {}
         }
     };
+    
+    var statsState = {
+        name: "stats",
+        url: "/stats",
+        component: "esStats"
+    };
 
     $stateProvider.state(welcomeState);
     $stateProvider.state(productListState);

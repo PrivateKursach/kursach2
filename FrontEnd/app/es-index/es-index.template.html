@@ -11,6 +11,7 @@
                     <li ng-if="!$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="cart">Корзина</a></li>
                     <li ng-if="$ctrl.isLogged()" ui-sref-active="active"><a ui-sref="orders">Список заказов</a></li>
                     <li ng-if="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="productTypes">Категории товаров</a></li>
+                    <li ng-if="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="stats">Статистика</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li ui-sref-active="active" ng-if="!$ctrl.isLogged()"><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>

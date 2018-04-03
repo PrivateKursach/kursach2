@@ -1,5 +1,6 @@
 package by.bsuir.losenok.controller;
 
+import by.bsuir.losenok.dto.ProductsByTypeStatsDTO;
 import by.bsuir.losenok.dto.SalesByTypesStatsDTO;
 import by.bsuir.losenok.service.StatsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,10 @@ public class StatsController {
     @GetMapping("/sales-by-types")
     public ResponseEntity<List<SalesByTypesStatsDTO>> getSalesByTypesStats() {
         return ResponseEntity.ok(statsService.getSalesByTypesStats());
+    }
+
+    @GetMapping("/products-by-types")
+    public ResponseEntity<List<ProductsByTypeStatsDTO>> getProductsByTypesStats() {
+        return ResponseEntity.ok(statsService.getProductsByTypesStats());
     }
 }

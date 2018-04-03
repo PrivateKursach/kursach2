@@ -3,6 +3,7 @@ package by.bsuir.losenok.service.impl;
 import by.bsuir.losenok.dao.OrderDAO;
 import by.bsuir.losenok.dao.ProductDAO;
 import by.bsuir.losenok.dao.ProductTypeDAO;
+import by.bsuir.losenok.dto.ProductsByTypeStatsDTO;
 import by.bsuir.losenok.dto.SalesByTypesStatsDTO;
 import by.bsuir.losenok.entity.Product;
 import by.bsuir.losenok.entity.ProductType;
@@ -45,5 +46,20 @@ public class StatsServiceImpl implements StatsService {
             salesByTypesStats.add(salesByTypesStatsDTO);
         }
         return salesByTypesStats;
+    }
+
+    @Override
+    public List<ProductsByTypeStatsDTO> getProductsByTypesStats() {
+        List<ProductType> productTypes = productTypeDAO.getAllProductTypes();
+        List<ProductsByTypeStatsDTO> productsByTypeStats = new ArrayList<>(productTypes.size());
+        for (ProductType productType : productTypes) {
+            List<Product> products = productDAO.getProductsByTypes(0, Integer.MAX_VALUE, Collections.singleton(productType.getId()), null, null);
+            ProductsByTypeStatsDTO productsByTypeStatsDTO = new ProductsByTypeStatsDTO();
+            productsByTypeStatsDTO.setProductTypeId(productType.getId());
+            productsByTypeStatsDTO.setProductTypeName(productType.getName());
+            productsByTypeStatsDTO.setProductsNumber((long) products.size());
+            productsByTypeStats.add(productsByTypeStatsDTO);
+        }
+        return productsByTypeStats;
     }
 }

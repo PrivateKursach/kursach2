@@ -19,10 +19,10 @@ function statsService($http) {
         });
     };
 
-    service.getProductByTypeStats = function () {
+    service.getProductsByTypesStats = function () {
         return $http({
             method: "GET",
-            url: "http://localhost:8081/rest/stats/product-by-type"
+            url: "http://localhost:8081/rest/stats/products-by-types"
         }).then(function (response) {
             return response.data;
         });

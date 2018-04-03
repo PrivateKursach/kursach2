@@ -21,14 +21,19 @@
         <es-product-list-pagination current-page="$ctrl.currentPage" items-per-page="$ctrl.itemsPerPage" total-items="$ctrl.totalItems" on-page-changed="$ctrl.pageChanged(currentPage)" on-items-per-page-changed="$ctrl.itemsPerPageChanged(itemsPerPage)"></es-product-list-pagination>
     </div>
 
-    <div class="well clearfix" ng-repeat="product in $ctrl.productList">
-        <h3><a ui-sref="product({ productId : product.id, prevState : $ctrl.getStateInfo() })">{{ product.name }}</a></h3>
-        <p><span class="tag" ng-repeat="type in product.types">{{ type.name }}</span></p>
-        <p>Цена: {{ product.price }} р.</p>
-        <p>{{ product.description }}</p>
-        <div class="buttons-block">
-            <a class="btn btn-sm btn-primary" ng-if="!$ctrl.inCart(product.id)" ng-click="$ctrl.addToCart(product)">В корзину</a>
-            <a class="btn btn-sm btn-default" ng-if="$ctrl.inCart(product.id)" ng-click="$ctrl.removeFromCart(product.id)">Удалить из корзины</a>
+    <div class="clearfix">
+        <div class="product-card-wrapper col-sm-4 clearfix" ng-repeat="product in $ctrl.productList">
+            <div class="product-card well clearfix">
+                <h3><a ui-sref="product({ productId : product.id, prevState : $ctrl.getStateInfo() })">{{ product.name }}</a></h3>
+                <p><span class="tag" ng-repeat="type in product.types">{{ type.name }}</span></p>
+                <img src="{{ product.imageUrl }}">
+                <p>Цена: {{ product.price }} р.</p>
+                <p>{{ product.description }}</p>
+                <div class="buttons-block">
+                    <a class="btn btn-sm btn-primary" ng-if="!$ctrl.isAdmin() && !$ctrl.inCart(product.id)" ng-click="$ctrl.addToCart(product)">В корзину</a>
+                    <a class="btn btn-sm btn-default" ng-if="!$ctrl.isAdmin() && $ctrl.inCart(product.id)" ng-click="$ctrl.removeFromCart(product.id)">Удалить из корзины</a>
+                </div>
+            </div>
         </div>
     </div>
 

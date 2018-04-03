@@ -6,7 +6,7 @@ var esProductComponent = {
     }
 };
 
-function ProductController(productService, errorMessageService, modalService, $stateParams, $state) {
+function ProductController(productService, errorMessageService, modalService, $stateParams, $state, $rootScope, sessionService) {
     var $ctrl = this;
 
     $ctrl.$onInit = function () {
@@ -26,6 +26,10 @@ function ProductController(productService, errorMessageService, modalService, $s
         modalInstance.result.then(function () {
             $state.go("welcome");
         });
+    };
+    
+    $ctrl.isAdmin = function () {
+        return sessionService.isAdmin($rootScope);
     };
 
     function getProductById() {

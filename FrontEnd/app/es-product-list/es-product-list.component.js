@@ -73,13 +73,13 @@ function ProductListController(productService, $state, $stateParams, $cookies, $
         modalService.openAddProductModal();
     };
 
-    var availableLimits  = [10, 20, 30, 50];
+    var availableLimits  = [12, 24, 36, 48];
 
     function setProductList() {
         var page = parseInt($stateParams.page, 10);
         var limit = parseInt($stateParams.limit, 10);
         if (availableLimits.indexOf(limit) == -1) {
-            limit = 10;
+            limit = 12;
         }
 
         var offset = (page - 1) * limit;

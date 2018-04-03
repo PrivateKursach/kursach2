@@ -3,10 +3,10 @@
         {{ $ctrl.itemsPerPage }} на страницу<span class="caret"></span>
     </button>
     <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="items-per-page-button">
-        <li role="menuitem" ng-class="{ active: $ctrl.itemsPerPage == 10 }" ng-click="$ctrl.setItemsPerPage(10)"><a>10 на страницу</a></li>
-        <li role="menuitem" ng-class="{ active: $ctrl.itemsPerPage == 20 }" ng-click="$ctrl.setItemsPerPage(20)"><a>20 на страницу</a></li>
-        <li role="menuitem" ng-class="{ active: $ctrl.itemsPerPage == 30 }" ng-click="$ctrl.setItemsPerPage(30)"><a>30 на страницу</a></li>
-        <li role="menuitem" ng-class="{ active: $ctrl.itemsPerPage == 50 }" ng-click="$ctrl.setItemsPerPage(50)"><a>50 на страницу</a></li>
+        <li role="menuitem" ng-class="{ active: $ctrl.itemsPerPage == 12 }" ng-click="$ctrl.setItemsPerPage(12)"><a>12 на страницу</a></li>
+        <li role="menuitem" ng-class="{ active: $ctrl.itemsPerPage == 24 }" ng-click="$ctrl.setItemsPerPage(24)"><a>24 на страницу</a></li>
+        <li role="menuitem" ng-class="{ active: $ctrl.itemsPerPage == 36 }" ng-click="$ctrl.setItemsPerPage(36)"><a>36 на страницу</a></li>
+        <li role="menuitem" ng-class="{ active: $ctrl.itemsPerPage == 48 }" ng-click="$ctrl.setItemsPerPage(48)"><a>48 на страницу</a></li>
     </ul>
 </div>
 <ul uib-pagination total-items="$ctrl.totalItems" items-per-page="$ctrl.itemsPerPage" ng-model="$ctrl.currentPage" ng-change="$ctrl.pageChanged()" force-ellipses="true" max-size="7" boundary-link-numbers="true" next-text=">" previous-text="<"></ul>

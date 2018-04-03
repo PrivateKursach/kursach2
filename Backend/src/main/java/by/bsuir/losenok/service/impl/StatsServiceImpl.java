@@ -42,7 +42,8 @@ public class StatsServiceImpl implements StatsService {
             salesByTypesStatsDTO.setProductTypeId(productType.getId());
             salesByTypesStatsDTO.setProductTypeName(productType.getName());
             salesByTypesStatsDTO.setTotalSales(totalSales);
+            salesByTypesStats.add(salesByTypesStatsDTO);
         }
-        return null;
+        return salesByTypesStats;
     }
 }

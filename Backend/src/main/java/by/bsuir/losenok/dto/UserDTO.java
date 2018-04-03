@@ -9,6 +9,8 @@ public class UserDTO extends DTO<Long> {
     private String email;
     private String password;
     private Integer role;
+    private String firstName;
+    private String lastName;
 
     public String getEmail() {
         return email;
@@ -32,5 +34,21 @@ public class UserDTO extends DTO<Long> {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

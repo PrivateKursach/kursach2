@@ -12,6 +12,8 @@ public class User extends EntityObject<Long> {
     private String email;
     private String password;
     private Integer role;
+    private String firstName;
+    private String lastName;
 
     private Set<Order> orders;
 
@@ -40,6 +42,24 @@ public class User extends EntityObject<Long> {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    @Column(name = "first_name")
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Column(name = "last_name")
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @OneToMany(mappedBy = "user")

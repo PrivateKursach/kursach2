@@ -19,6 +19,8 @@ public class UserDTOConverter implements DTOConverter<User, UserDTO> {
         userDTO.setEmail(entity.getEmail());
         userDTO.setPassword(entity.getPassword());
         userDTO.setRole(entity.getRole());
+        userDTO.setFirstName(entity.getFirstName());
+        userDTO.setLastName(entity.getLastName());
         return userDTO;
     }
 
@@ -29,6 +31,8 @@ public class UserDTOConverter implements DTOConverter<User, UserDTO> {
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
         user.setRole(dto.getRole());
+        user.setFirstName(dto.getFirstName());
+        user.setLastName(dto.getLastName());
         return user;
     }
 

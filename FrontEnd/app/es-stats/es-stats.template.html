@@ -12,3 +12,10 @@
         type="pie3d"
         datasource="{{ $ctrl.productsByTypeChartData }}"
 ></fusioncharts>
+<h3>Динамика количества заказов за последние 50 дней</h3>
+<fusioncharts
+        width="600"
+        height="400"
+        type="column2d"
+        datasource="{{ $ctrl.numberOfOrdersChartData }}"
+></fusioncharts>

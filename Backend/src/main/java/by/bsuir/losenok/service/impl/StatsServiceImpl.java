@@ -3,6 +3,7 @@ package by.bsuir.losenok.service.impl;
 import by.bsuir.losenok.dao.OrderDAO;
 import by.bsuir.losenok.dao.ProductDAO;
 import by.bsuir.losenok.dao.ProductTypeDAO;
+import by.bsuir.losenok.dto.NumberOfOrdersStatsDTO;
 import by.bsuir.losenok.dto.ProductsByTypeStatsDTO;
 import by.bsuir.losenok.dto.SalesByTypesStatsDTO;
 import by.bsuir.losenok.entity.Product;
@@ -12,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -61,5 +62,21 @@ public class StatsServiceImpl implements StatsService {
             productsByTypeStats.add(productsByTypeStatsDTO);
         }
         return productsByTypeStats;
+    }
+
+    @Override
+    public List<NumberOfOrdersStatsDTO> getNumberOfOrdersStats() {
+        LocalDate today = LocalDate.now();
+        List<NumberOfOrdersStatsDTO> numberOfOrdersStats = new ArrayList<>(5);
+        for (int i = 5; i > 0; i--) {
+            LocalDate dateFrom = today.minusDays(10 * i);
+            LocalDate dateTo = dateFrom.plusDays(9);
+            NumberOfOrdersStatsDTO numberOfOrdersStatsDTO = new NumberOfOrdersStatsDTO();
+            numberOfOrdersStatsDTO.setFrom(dateFrom);
+            numberOfOrdersStatsDTO.setTo(dateTo);
+            numberOfOrdersStatsDTO.setNumberOfOrders(orderDAO.getNumberOfOrdersBetweenDates(dateFrom, dateTo));
+            numberOfOrdersStats.add(numberOfOrdersStatsDTO);
+        }
+        return numberOfOrdersStats;
     }
 }

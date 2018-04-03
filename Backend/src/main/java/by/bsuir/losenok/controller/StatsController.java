@@ -1,5 +1,6 @@
 package by.bsuir.losenok.controller;
 
+import by.bsuir.losenok.dto.NumberOfOrdersStatsDTO;
 import by.bsuir.losenok.dto.ProductsByTypeStatsDTO;
 import by.bsuir.losenok.dto.SalesByTypesStatsDTO;
 import by.bsuir.losenok.service.StatsService;
@@ -28,5 +29,10 @@ public class StatsController {
     @GetMapping("/products-by-types")
     public ResponseEntity<List<ProductsByTypeStatsDTO>> getProductsByTypesStats() {
         return ResponseEntity.ok(statsService.getProductsByTypesStats());
+    }
+
+    @GetMapping("/number-of-orders")
+    public ResponseEntity<List<NumberOfOrdersStatsDTO>> getNumberOfOrdersStats() {
+        return ResponseEntity.ok(statsService.getNumberOfOrdersStats());
     }
 }

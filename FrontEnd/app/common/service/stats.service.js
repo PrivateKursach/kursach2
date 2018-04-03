@@ -10,10 +10,10 @@ function statsService($http) {
         });
     };
 
-    service.getNumberOfProductsStats = function () {
+    service.getNumberOfOrdersStats = function () {
         return $http({
             method: "GET",
-            url: "http://localhost:8081/rest/stats/number-of-products"
+            url: "http://localhost:8081/rest/stats/number-of-orders"
         }).then(function (response) {
             return response.data;
         });

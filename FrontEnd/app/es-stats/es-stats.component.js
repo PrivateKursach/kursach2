@@ -38,6 +38,15 @@ function StatsComponentController(statsService, errorMessageService) {
         },
         data: []
     };
+    $ctrl.numberOfOrdersChartData = {
+        chart: {
+            caption: "Динамика количества заказов",
+            subCaption: "За последние 50 дней",
+            numberPrefix: "р",
+            theme: "ocean"
+        },
+        data: []
+    };
 
     $ctrl.$onInit = function () {
         statsService.getSalesByTypesStats().then(function (stats) {
@@ -86,6 +95,23 @@ function StatsComponentController(statsService, errorMessageService) {
                     showpercentintooltip: "0",
                     plottooltext: "Категория : $label Кол-во продуктов : $datavalue",
                     theme: "fint"
+                },
+                data: data
+            };
+        });
+        statsService.getNumberOfOrdersStats().then(function (stats) {
+            var data = [];
+            stats.forEach(function (item, i, array) {
+                data.push({
+                    label: "C " + item.from + " по " + item.to,
+                    value: item.numberOfOrders
+                })
+            });
+            $ctrl.numberOfOrdersChartData = {
+                chart: {
+                    caption: "Динамика количества заказов",
+                    subCaption: "За последние 50 дней",
+                    theme: "ocean"
                 },
                 data: data
             };
